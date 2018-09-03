@@ -3,46 +3,53 @@
 
 using namespace std;
 
+void selection(int n, int a[20]){
+
+    int k,i,temp,min;
+    
+    for(i=0; i<n-1; i++){
+        min=i;
+
+        for(k=i+1; k<n; k++){
+            if(a[min]>a[k])
+                min=k;
+        }
+
+            if(i!=min){
+                temp=a[i];
+                a[i]=a[min];
+                a[min]=temp;
+            }
+    }
+
+    cout<<"Sorted list is: \n";
+    
+    for(i=0;i<n;i++)
+        cout<<a[i]<<", ";
+    
+    cout<<"\n";
+}
 
 int main(){
 
 	clock_t t1,t2;
     t1 = clock();
 
-	int n;
-	cout<<"Enter the size you want the array to be: ";
-	cin>>n;
-	int arr[n];
-	cout<<"Enter " <<n<< " numbers for the array";
+    int a[20],i,j,k,n,temp,min;
 
-	for(int i = 0; i < n; i++){
-		cin>>arr[i];
-	}
+    cout<<"Enter the size of the array: ";
+    cin>>n;
 
-	for(int i = 0; i < n-1; i++){
-		int min = i;
+    cout<<"Enter "<<n<< " elements ";
 
-		for(int j = i+1; j < n; j++){
-			if(arr[min] > arr[j]){
-				min = j;
-			}
-		}
+    for(i=0; i<n; i++)
+        cin>>a[i];
 
-		if(min != i){	
-			int temp = arr[i];
-			arr[i] = arr[min];
-			arr[min] = temp;
-		}
-	}
+    selection(n,a);
 
-	cout<<"Sorted array is: ";
-	for(int i = 0; i < n; i++){
-		cout<<arr[i]<<"\t";
-	}
+    t2 = clock();
+    float diff (((float)t2-(float)t1)/1000);
+    cout<<"\nTIME TAKEN: " <<diff<<endl;
 
-	t2 = clock();
-    float diff ((float)t2-(float)t1);
-    float secs = diff/1000;
-    cout<<"\nTIME TAKEN:" <<secs<<endl;
 
 }
