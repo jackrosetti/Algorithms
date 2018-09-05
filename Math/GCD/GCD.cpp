@@ -1,3 +1,5 @@
+//read more here: https://en.wikipedia.org/wiki/Binary_GCD_algorithm and https://www.geeksforgeeks.org/operators-c-c/
+
 #include<iostream>
 
 using namespace std;
